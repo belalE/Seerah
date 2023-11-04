@@ -9,13 +9,19 @@ const PersonSchema = new Schema(
   {
     name: String,
     fullName: String,
-    relations: [
+    father: { type: Schema.Types.ObjectId, ref: "Person" },
+    mother: { type: Schema.Types.ObjectId, ref: "Person" },
+    children: [{ type: Schema.Types.ObjectId, ref: "Person" }],
+    birth: Date,
+    death: Date,
+    spouses: [
       {
-        person: {
+        spouse: {
           type: Schema.Types.ObjectId,
           ref: "Person",
         },
-        relation: String,
+        marriage: Date,
+        divorce: Date,
       },
     ],
     image: ImageSchema,
