@@ -1,15 +1,15 @@
 import React from "react";
-import Aux from "../Aux/Aux";
 import Header from "../../components/Navigation/Header/Header";
 import Footer from "../../components/Navigation/Footer/Footer";
 
 const Layout = (props) => {
   return (
-    <Aux>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="mb-auto">{props.children}</main>
+      <main className="mx-4 my-4">{props.children}</main>
+      <div className="mt-auto"></div>
       <Footer />
-    </Aux>
+    </div>
   );
 };
 
