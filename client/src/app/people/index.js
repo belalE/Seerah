@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Button from "../components/UI/Button/Button";
-import PersonForm from "../components/PersonForm/PersonForm";
+import Button from "@/components/UI/Button/Button";
+import PersonForm from "@/components/PersonForm/PersonForm";
 
 function People() {
   const [people, setPeople] = useState([]);

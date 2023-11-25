@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "../../components/Navigation/Header/Header";
-import Footer from "../../components/Navigation/Footer/Footer";
-
+import Header from "@/components/Navigation/Header/Header";
+import Footer from "@/components/Navigation/Footer/Footer";
 const Layout = (props) => {
   return (
     <div className="flex flex-col min-h-screen">
