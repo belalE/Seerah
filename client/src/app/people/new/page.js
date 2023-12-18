@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Input from "../UI/Input/Input";
-import Button from "../UI/Button/Button";
-import SearchInput from "../UI/SearchInput/SearchInput";
-import SearchMultipleInput from "../UI/SearchMultipleInput/SearchMultipleInput";
+"use client";
+
+import React, { useEffect, useState, FormEvent } from "react";
+import Input from "@/components/UI/Input/Input";
+import Button from "@/components/UI/Button/Button";
+import SearchInput from "@/components/UI/SearchInput/SearchInput";
+import SearchMultipleInput from "@/components/UI/SearchMultipleInput/SearchMultipleInput";
+import axios from "axios";
 
 const PersonForm = () => {
   const [name, setName] = useState("");
@@ -44,7 +47,7 @@ const PersonForm = () => {
     },
   ];
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // TODO: implement axios for implementation with backend
     let person = {
@@ -57,8 +60,15 @@ const PersonForm = () => {
       tribe: tribe,
       tags: tags,
     };
-    console.log(person);
-    // handle form submission here
+
+    const formData = new FormData(event.target);
+    console.log("form Data: ", formData);
+    const response = await fetch("/api/persons", {
+      method: "POST",
+      body: person,
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   useEffect(() => {
@@ -69,6 +79,7 @@ const PersonForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1 className="text-center font-extrabold text-3xl">Add Person</h1>
       <Input
         label="Name"
         value={name}
