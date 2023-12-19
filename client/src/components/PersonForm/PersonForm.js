@@ -3,13 +3,14 @@ import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import SearchInput from "../UI/SearchInput/SearchInput";
 import SearchMultipleInput from "../UI/SearchMultipleInput/SearchMultipleInput";
+import axios from "axios";
 
 const PersonForm = () => {
   const [name, setName] = useState("");
   const [fullName, setFullName] = useState("");
   const [father, setFather] = useState("");
   const [mother, setMother] = useState("");
-  const [children, setChildren] = useState("");
+  const [children, setChildren] = useState([]);
   const [description, setDescription] = useState("");
   const [tribe, setTribe] = useState("");
   const [tags, setTags] = useState("");
@@ -57,8 +58,22 @@ const PersonForm = () => {
       tribe: tribe,
       tags: tags,
     };
-    console.log(person);
-    // handle form submission here
+
+    // Loop through entries in object and replace any empty strings with null
+    for (const [key, value] of Object.entries(person)) {
+      if (value === "") {
+        person[key] = null;
+      }
+    }
+
+    axios
+      .post("/api/persons", { person: person })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
