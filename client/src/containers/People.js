@@ -26,13 +26,14 @@ function People() {
       <Button styleChoice="primary">
         <Link to={`/people/new`}>Add Person</Link>
       </Button>
+
       {/* <PersonForm people={people} /> */}
       {/* TODO: Add filter by different qualities */}
       {/* TODO: Create circles with names in calligraphy, with x in corner to delete for admin */}
       <ul>
         {people.map((person) => (
           <li key={person.id}>
-            {person.name}{" "}
+            <Link to={`/people/${person.id}`}>{person.name + " "}</Link>
             <Button
               styleChoice="tertiary"
               clicked={() => deletePerson(person.id)}

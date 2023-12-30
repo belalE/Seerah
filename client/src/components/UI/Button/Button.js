@@ -3,11 +3,11 @@ import React from "react";
 const Button = (props) => {
   const styles = {
     primary:
-      "bg-green-700 hover:bg-green-900 text-white font-semibold py-1 px-3 rounded",
+      "bg-green-700 hover:bg-green-900 text-white font-semibold py-1 px-3 my-1  rounded block",
     secondary:
-      "bg-gray-500 hover:bg-gray-700 text-white font-semibold py-1 px-3 rounded",
+      "bg-gray-500 hover:bg-gray-700 text-white font-semibold py-1 px-3 my-1 rounded block",
     tertiary:
-      "bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-3 rounded",
+      "bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-3 my-1 rounded block",
   };
 
   return (

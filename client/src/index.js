@@ -6,10 +6,11 @@ import Layout from "./hoc/Layout/Layout";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import People, { loader as peopleLoader } from "./containers/People";
-import About from "./components/Pages/About/About";
+import About from "./components/About/About";
 import PersonForm, {
   loader as personFormLoader,
 } from "./components/PersonForm/PersonForm";
+import Person, { loader as personLoader } from "./components/Person/Person";
 
 // TODO: Create Error Page and add it to the router
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "people", element: <People />, loader: peopleLoader },
       { path: "people/new", element: <PersonForm />, loader: personFormLoader },
-      { path: "people/:id", element: <div>Person </div> },
+      { path: "people/:id", element: <Person />, loader: personLoader },
     ],
   },
 ]);
