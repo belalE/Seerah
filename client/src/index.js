@@ -5,6 +5,7 @@ import App from "./App";
 import Layout from "./hoc/Layout/Layout";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 import People, { loader as peopleLoader } from "./containers/People";
 import About from "./components/About/About";
 import PersonForm, {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <App /> },
       { path: "about", element: <About /> },
