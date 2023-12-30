@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/UI/Button/Button";
-import PersonForm from "../components/PersonForm/PersonForm";
 
 function People() {
-  const [people, setPeople] = useState([]);
+  const data = useLoaderData();
+  const [people, setPeople] = useState(data);
+
   // const [filters, setFilters] = useState({});
 
-  useEffect(() => {
-    fetch("/api/persons")
-      .then((response) => response.json())
-      .then((data) => setPeople(data));
-  }, []);
-
+  // TODO: Maybe add pop up to confirm delete
   let deletePerson = (id) => {
     fetch(`/api/persons/${id}`, {
       method: "DELETE",
@@ -25,7 +23,10 @@ function People() {
   return (
     <div>
       <h1 className="text-center font-extrabold text-3xl">People</h1>
-      <PersonForm people={people} />
+      <Button styleChoice="primary">
+        <Link to={`/people/new`}>Add Person</Link>
+      </Button>
+      {/* <PersonForm people={people} /> */}
       {/* TODO: Add filter by different qualities */}
       {/* TODO: Create circles with names in calligraphy, with x in corner to delete for admin */}
       <ul>
@@ -43,6 +44,12 @@ function People() {
       </ul>
     </div>
   );
+}
+
+export async function loader() {
+  const response = await fetch("/api/persons");
+  const data = await response.json();
+  return data;
 }
 
 export default People;

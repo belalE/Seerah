@@ -8,8 +8,8 @@ const Header = () => {
         <ul className="flex flex-row p-3">
           <h2 className="mr-6 font-extrabold text-xl">Seerah</h2>
           <NavItem link="/">Home</NavItem>
-          <NavItem link="/">About</NavItem>
-          <NavItem link="/">People</NavItem>
+          <NavItem link="/about">About</NavItem>
+          <NavItem link="/people">People</NavItem>
         </ul>
       </nav>
     </header>
